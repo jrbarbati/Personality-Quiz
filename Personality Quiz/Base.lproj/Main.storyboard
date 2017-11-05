@@ -19,6 +19,7 @@
         <!--LandingPage-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="LandingPage" title="LandingPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ViewController" customModule="Personality_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
@@ -59,19 +60,27 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jEM-Xq-5dX">
-                                <rect key="frame" x="28" y="374" width="318.33333333333331" height="64.333333333333314"/>
+                                <rect key="frame" x="28" y="374.33333333333331" width="318.33333333333331" height="63.666666666666686"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Anmial Are You?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hek-ai-8Xr">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Which Animal Are You?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hek-ai-8Xr">
                                         <rect key="frame" x="0.0" y="0.0" width="318.33333333333331" height="34.333333333333336"/>
                                         <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOl-p8-980">
-                                        <rect key="frame" x="82.333333333333314" y="34.333333333333314" width="154" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mOl-p8-980">
+                                        <rect key="frame" x="68.666666666666686" y="34.333333333333371" width="181" height="29.333333333333329"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="Begin Personality Quiz">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Begin Personality Quiz       ">
+                                                    <attributes>
+                                                        <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <font key="NSFont" size="15" name=".SFNSText"/>
+                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
                                         </state>
                                         <connections>
                                             <action selector="beginQuiz:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gpP-8U-Gld"/>
@@ -104,14 +113,13 @@
                         <segue destination="SiH-kK-f1w" kind="show" identifier="toQuiz" id="uRP-y8-DLu"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1007.2" y="26.600985221674879"/>
         </scene>
         <!--Quiz-->
         <scene sceneID="shq-QW-Rce">
             <objects>
-                <viewController storyboardIdentifier="QuizPage" title="Quiz" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lc3-qW-dwV" customClass="QuizViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuizPage" title="Quiz" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lc3-qW-dwV" customClass="QuizViewController" customModule="Personality_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7XN-rU-ZBy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,18 +131,30 @@
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIb-Yr-8Lb">
                                         <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleButtonPressed:" destination="lc3-qW-dwV" eventType="touchUpInside" id="e5F-ZQ-XNa"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqG-8w-lnr">
                                         <rect key="frame" x="0.0" y="50" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleButtonPressed:" destination="lc3-qW-dwV" eventType="touchUpInside" id="jZB-9L-H6E"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PDZ-uP-5SF">
                                         <rect key="frame" x="0.0" y="100" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleButtonPressed:" destination="lc3-qW-dwV" eventType="touchUpInside" id="oHR-47-pxl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3aN-0v-VB6">
                                         <rect key="frame" x="0.0" y="150" width="46" height="30"/>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="singleButtonPressed:" destination="lc3-qW-dwV" eventType="touchUpInside" id="Jiu-Dp-BHt"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -200,6 +220,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SR-Qd-w2D">
                                         <rect key="frame" x="0.0" y="204" width="355" height="30"/>
                                         <state key="normal" title="Submit Answer"/>
+                                        <connections>
+                                            <action selector="multipleSubmitPressed:" destination="lc3-qW-dwV" eventType="touchUpInside" id="YgU-Sn-gS4"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -229,6 +252,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgg-EO-H8p">
                                         <rect key="frame" x="0.0" y="90.333333333333314" width="355" height="30"/>
                                         <state key="normal" title="Submit Answer"/>
+                                        <connections>
+                                            <action selector="rangedSubmitPressed:" destination="lc3-qW-dwV" eventType="touchUpInside" id="D3W-mp-FT6"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -295,7 +321,7 @@
         <!--Reults-->
         <scene sceneID="qX2-tn-Efw">
             <objects>
-                <viewController storyboardIdentifier="Results" title="Reults" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zmZ-Qd-aIS" customClass="ResultsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Results" title="Reults" useStoryboardIdentifierAsRestorationIdentifier="YES" id="zmZ-Qd-aIS" customClass="ResultsViewController" customModule="Personality_Quiz" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hAf-l5-ogU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -329,10 +355,19 @@
                         <viewLayoutGuide key="safeArea" id="oN7-pt-ZdB"/>
                     </view>
                     <navigationItem key="navigationItem" title="Results" id="PTt-4Z-IDJ">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="7oU-f7-miF"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="7oU-f7-miF">
+                            <connections>
+                                <segue destination="bmx-Qw-ZNS" kind="unwind" unwindAction="unwindToLandingPageWithSegue:" id="qmg-vH-7L7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="resultsAnswer" destination="7Vn-VT-l7G" id="Cy4-r9-5Ld"/>
+                        <outlet property="resultsDefinition" destination="UT4-xe-rZc" id="FXt-GZ-FWq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jWa-TU-1ES" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="bmx-Qw-ZNS" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1279.2" y="26.600985221674879"/>
         </scene>

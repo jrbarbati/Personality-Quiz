@@ -66,14 +66,88 @@ class QuizViewController: UIViewController
     
     var questionIndex: Int = 0
     
+    var answersChosen: [Answer] = [Answer]()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        self.showNextQuestion()
+    }
+    
+    @IBAction func singleButtonPressed(_ sender: UIButton)
+    {
+        let currAnswers = self.getCurrAnswers()
+        
+        switch sender
+        {
+        case self.singleFirstChoice:
+            self.answersChosen.append(currAnswers[0])
+        case self.singleSecondChoice:
+            self.answersChosen.append(currAnswers[1])
+        case self.singleThirdChoice:
+            self.answersChosen.append(currAnswers[2])
+        case self.singleFourthChoice:
+            self.answersChosen.append(currAnswers[3])
+        default:
+            break
+        }
+        
+        self.nextQuestion()
+    }
+    
+    @IBAction func multipleSubmitPressed(_ sender: UIButton)
+    {
+        let currAnswers = self.getCurrAnswers()
+        
+        if self.multipleFirstSwitch.isOn
+        {
+            self.answersChosen.append(currAnswers[0])
+        }
+        
+        if self.multipleSecondSwitch.isOn
+        {
+            self.answersChosen.append(currAnswers[1])
+        }
+        
+        if self.multipleThirdSwitch.isOn
+        {
+            self.answersChosen.append(currAnswers[2])
+        }
+        
+        if self.multipleFourthSwitch.isOn
+        {
+            self.answersChosen.append(currAnswers[3])
+        }
+        
+        self.nextQuestion()
+    }
+    
+    @IBAction func rangedSubmitPressed(_ sender: UIButton)
+    {
+        let currAnswers = self.getCurrAnswers()
+        
+        let index = Int(round(self.rangedSlider.value * Float(currAnswers.count - 1)))
+        
+        self.answersChosen.append(currAnswers[index])
+        
         self.nextQuestion()
     }
     
     func nextQuestion()
+    {
+        self.questionIndex += 1
+        
+        guard self.questionIndex < self.questions.count else
+        {
+            performSegue(withIdentifier: "toResults", sender: nil)
+            return
+        }
+        
+        self.showNextQuestion()
+    }
+    
+    func showNextQuestion()
     {
         single.isHidden = true
         multiple.isHidden = true
@@ -97,8 +171,6 @@ class QuizViewController: UIViewController
         case .ranged:
             self.showRangedQuestion(withAnswers: currAnswers)
         }
-        
-        self.questionIndex += 1
     }
     
     func showSingleQuestion(withAnswers answers: [Answer])
@@ -113,17 +185,37 @@ class QuizViewController: UIViewController
     func showMultipleQuestion(withAnswers answers: [Answer])
     {
         self.multiple.isHidden = false
+        self.resetSwitches()
         self.multipleFirstLabel.text = answers[0].text
         self.multipleSecondLabel.text = answers[1].text
         self.multipleThirdLabel.text = answers[2].text
         self.multipleFourthLabel.text = answers[3].text
     }
     
+    func resetSwitches()
+    {
+        self.multipleFirstSwitch.isOn = false
+        self.multipleSecondSwitch.isOn = false
+        self.multipleThirdSwitch.isOn = false
+        self.multipleFourthSwitch.isOn = false
+    }
+    
     func showRangedQuestion(withAnswers answers: [Answer])
     {
         self.ranged.isHidden = false
+        self.resetSlider()
         self.rangedLowerLabel.text = answers.first?.text
         self.rangedHigherLabel.text = answers.last?.text
+    }
+    
+    func resetSlider()
+    {
+        self.rangedSlider.setValue(0.5, animated: false)
+    }
+    
+    func getCurrAnswers() -> [Answer]
+    {
+         return self.questions[self.questionIndex].answers
     }
 
     override func didReceiveMemoryWarning()
@@ -132,13 +224,18 @@ class QuizViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        guard segue.identifier == "toResults" else
+        {
+            print("incorrect segue...returning...")
+            return
+        }
+        
+        let resultsViewController = segue.destination as! ResultsViewController
+        resultsViewController.responses = answersChosen
     }
-    */
 }

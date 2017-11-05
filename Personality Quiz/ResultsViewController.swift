@@ -10,10 +10,48 @@ import UIKit
 
 class ResultsViewController: UIViewController
 {
+    @IBOutlet weak var resultsAnswer: UILabel!
+    @IBOutlet weak var resultsDefinition: UILabel!
+    
+    var responses: [Answer]!
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        navigationItem.hidesBackButton = true
+        self.calculatePersonalityResult()
+    }
+    
+    func calculatePersonalityResult()
+    {
+        var frequencyOfAnswers: [Animal : Int] = [
+            .dog : 0,
+            .cat : 0,
+            .bunny : 0,
+            .turtle : 0
+        ]
+        
+        let responsesType = responses.map {$0.type}
+        
+        for type in responsesType
+        {
+            frequencyOfAnswers[type] = (frequencyOfAnswers[type] ?? 0) + 1
+        }
+        
+        let sortedFrequency = frequencyOfAnswers.sorted(by: { (pair1, pair2) -> Bool in
+            return pair1.value > pair2.value
+        })
+        
+        let mostCommonAnswer = sortedFrequency.first!.key
+        
+        self.updateLabels(withResult: mostCommonAnswer)
+    }
+    
+    func updateLabels(withResult result: Animal)
+    {
+        self.resultsAnswer.text = "You are a \(result.rawValue)"
+        self.resultsDefinition.text = result.definition
     }
 
     override func didReceiveMemoryWarning()

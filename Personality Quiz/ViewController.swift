@@ -23,6 +23,11 @@ class ViewController: UIViewController
     {
         performSegue(withIdentifier: "toQuiz", sender: sender)
     }
+    
+    @IBAction func unwindToLandingPage(segue: UIStoryboardSegue)
+    {
+        
+    }
 
     override func didReceiveMemoryWarning()
     {
