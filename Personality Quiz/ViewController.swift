@@ -8,18 +8,25 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
+class ViewController: UIViewController
+{
+    @IBOutlet weak var beginBtn: UIButton!
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        self.beginBtn.layer.cornerRadius = 7.0
+    }
+    
+    @IBAction func beginQuiz(_ sender: UIButton)
+    {
+        performSegue(withIdentifier: "toQuiz", sender: sender)
     }
 
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
 }
-
